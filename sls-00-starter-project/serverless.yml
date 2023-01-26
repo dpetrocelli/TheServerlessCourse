@@ -1,0 +1,20 @@
+app: sls-00-example
+service: sls-00-starter-project
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  hello:
+    handler: src/main.handler
+    events:
+      - http:
+          path: api/helloworld
+          method: get
+
+# sls --aws-profile itauclnet-eksadmin-pipe
